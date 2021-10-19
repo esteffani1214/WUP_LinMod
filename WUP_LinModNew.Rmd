@@ -43,10 +43,25 @@ In the scatter plot, we can see a positive correlation between arm strength and 
    
 ### Numerical results
 
+```{r}
+cor(SIMS~ARM,data=data)
+```
 
 ### Inferential  (Build model.1)
 
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
+SIMS = 0.054563(ARM) - 4.095160
+The adjusted R-squared value is 0.467. This value means that the ARM variable accounts for less than half of the variation of the SIMS data. The error of the mean model of the equation is reduced by 46.7%. The calculated residual standard error of the data is 1.226. This measures the deviation from the regression line. 
+
 #### Predict at target point
+
+```{r}
+SIMS = 0.054563*(88) - 4.095160
+```
 
 
 #### scatterplot with model fit
