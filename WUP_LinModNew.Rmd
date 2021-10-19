@@ -60,12 +60,23 @@ The adjusted R-squared value is 0.467. This value means that the ARM variable ac
 #### Predict at target point
 
 ```{r}
-SIMS = 0.054563*(88) - 4.095160
+mydata = data.frame(GRIP=94,ARM=88)
+```
+  
+```{r}
+predict(model.1, mydata, interval="confidence")
 ```
 
 
 #### scatterplot with model fit
   
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+```
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+``` 
 
 
 ## Model 2 SIM~GRIP
