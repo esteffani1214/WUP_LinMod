@@ -35,8 +35,12 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 ### scatterplot
 
-
-
+```{r}
+plot(SIMS~ARM,data=data)
+```
+  
+In the scatter plot, we can see a positive correlation between arm strength and work simulations. The scatter plot has a fairly consistent bandwidth of 4. The standard deviation of the data could be estimated to be 1.  
+   
 ### Numerical results
 
 
@@ -47,6 +51,7 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 #### scatterplot with model fit
   
+
 
 ## Model 2 SIM~GRIP
 
