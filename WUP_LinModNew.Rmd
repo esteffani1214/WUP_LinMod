@@ -21,7 +21,6 @@ Read about the data from the website where it is staged.  Then form three regres
 ```{r include=FALSE}
 require(tidyverse)
 require(tigerstats)
-require(rgl)
 require(knitr)
 
 ```
@@ -46,6 +45,7 @@ In the scatter plot, we can see a positive correlation between arm strength and 
 ```{r}
 cor(SIMS~ARM,data=data)
 ```
+There is a correlation of approximately 0.7.
 
 ### Inferential  (Build model.1)
 
@@ -54,6 +54,7 @@ model.1 <- lm(SIMS~ARM,data=data)
 summary.lm(model.1)
 ```
 
+The equation of the line is:
 SIMS = 0.054563(ARM) - 4.095160
 The adjusted R-squared value is 0.467. This value means that the ARM variable accounts for less than half of the variation of the SIMS data. The error of the mean model of the equation is reduced by 46.7%. The calculated residual standard error of the data is 1.226. This measures the deviation from the regression line. 
 
