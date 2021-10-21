@@ -185,3 +185,4 @@ Here the p value is even lower than the previous one, which makes sense because 
 anova(model.1,model.2)
 ```
 
+Even though we don't get a p value, we can see that model.1 has the smaller residual sum of squares. 
