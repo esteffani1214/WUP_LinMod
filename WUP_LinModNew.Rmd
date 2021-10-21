@@ -65,10 +65,9 @@ mydata = data.frame(GRIP=94,ARM=88)
 ```
   
 ```{r}
-predict(model.1, mydata, interval="confidence")
+predict(model.1, mydata, interval="prediction")
 ```
-
-
+  
 #### scatterplot with model fit
   
 ```{r}
@@ -84,18 +83,48 @@ basicNN + geom_point() + geom_smooth(method=lm)
 
 ### Now add in scatterplot
 
-
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+  
+In this scatterplot, there is a positive linear correlation because the dots are going uphill towards the right. 
+  
 ### Numerical results 
 
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+  
+The correlation between the work simulations and the grip strength is smaller than the correlation between work simulations and arm strength, which was 0.683.
 
 ### Inferential  (Build model.2)
   
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```
+
+The equation of the line is: 
+SIMS =  0.045463*GRIP - 4.809675. 
+The adjusted R-squared value is 0.4053, which is even smaller than the value for the first model. 
 
 #### predict model.2 at target point
-
+  
+```{r}
+predict(model.2, mydata, interval="prediction")
+```
+  
+When the value of grip is 94, the prediction of the SIMS value is -0.536.
+      
 #### now add the model fit to our plot for model.2
   
+```{r}
+basicNT <- ggplot(data,aes(y=SIMS,x=GRIP))
+```
 
+```{r}
+basicNT + geom_point() + geom_smooth(method=lm)
+``` 
 
 ## Model 3 SIM~ARM+GRIP
 
