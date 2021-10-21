@@ -128,19 +128,60 @@ basicNT + geom_point() + geom_smooth(method=lm)
 
 ## Model 3 SIM~ARM+GRIP
 
+```{r}
+model.3 <- lm(SIMS~ARM + GRIP,data=data)
+summary.lm(model.3)
+``` 
+  
+The equation is:
+SIMS = (.037311 * ARM) + (0.024470 * GRIP) - 5.433871
+  
 ### Numerical results (cor)
 
-`
+```{r}
+cor(SIMS~ARM + GRIP,data=data)
+```
   
+This model has the highest correlation compared to the other two models above with a value of 0.733.
+    
 ### Inferential  (Build 2-dimentional model.3)
 
+```{r}
+model.3 <- lm(SIMS~ARM + GRIP,data=data)
+summary.lm(model.3)
+```
+
+SIMS = (0.037311 * ARM) + (0.024470 * GRIP) - 5.433871
+  
 #### predict model.3 at target point
   
+```{r}
+predict(model.3, mydata, interval="prediction")
+```  
+
+When the ARM and GRIP values are 88 and 94 respectively, the prediction of SIMS is 0.149.
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+
+```{r}
+anova(model.1,model.3)
+```
+
+When the test ran, we got the residual sum of squares for model 1 for ARM, 217.88. When we added ARM + GRIP the number of degrees of freedom decreased by one because we are assessing both ARM and GRIP. With the low p value and the reduction of the sum of squares, we can see a significant statistical difference between them. So the model with the two regressors in it is superior to the model with just one. 
+
 ### Model.2 vs Model.3
 
+```{r}
+anova(model.2,model.3)
+```
+
+Here the p value is even lower than the previous one, which makes sense because we already observed that model.1 is better than model.2. The residual sum of squares is 243, which indicates that model.3 is a better model than model 2, and model.1 is a better model than model.2
+
 ## Informally compare Model.1 with model.2
+
+```{r}
+anova(model.1,model.2)
+```
 
